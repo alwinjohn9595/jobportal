@@ -8,13 +8,13 @@ mat-tab-group{
 }
 
 .example-large-box {
-    display: flex;
+    
     align-items: center;
-    justify-content: center;
+    
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
-    height: max-content;
-    width: max-content;
+    height: 580px;
+    width: 1450px;
 }
 
