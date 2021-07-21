@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminService } from '../services/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +14,7 @@ export class AdminComponent implements OnInit {
     
   
   constructor(private fb:FormBuilder,
-    // private auth: AuthService,
+     private auth:AdminService,
     private routes:Router) { }
     
     loginForm = this.fb.group({
@@ -33,10 +34,35 @@ export class AdminComponent implements OnInit {
     return this.loginForm.controls;
   }  
 
-  loginUser () {
+loginUser () {
     
-    this.routes.navigate(['/alumini/home'])
-  } 
+  
+  console.log(this.loginForm.value);
+  this.auth.postdata(this.loginForm.value).subscribe(
+    res =>{
+      console.log("hai");
+      console.log(res)
+      alert("User sucessfully added");
+      this.routes.navigate(["/admin/home"]);
+      
+    },
+    err =>{
+       if(err.status === 409){
+         alert("Incorrect credentials");
+       }else{
+         alert("somthing went wrong");
+         
+         console.log(err);
+         
+       }
+
+    }
+    
+  )
+ 
+
+  
+}
 
 
 }

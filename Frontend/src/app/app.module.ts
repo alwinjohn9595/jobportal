@@ -16,8 +16,9 @@ import { JobpostComponent } from './jobpost/jobpost.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { AboutusComponent } from './aboutus/aboutus.component';
 import { IndexComponent } from './index/index.component';
+import { FooterComponent } from './footer/footer.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +30,9 @@ import { IndexComponent } from './index/index.component';
     AlljobsComponent,
     JobpostComponent,
     NavbarComponent,
-    AboutusComponent,
-    IndexComponent
+    IndexComponent,
+    FooterComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
