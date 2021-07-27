@@ -5,11 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
+import { AboutusComponent } from './aboutus/aboutus.component';
 import { AppComponent } from './app.component';
 import { AluminiComponent } from './alumini/alumini.component';
 import { EmployerComponent } from './employer/employer.component';
-import { FacultyComponent } from './faculty/faculty.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { AlljobsComponent } from './alljobs/alljobs.component';
 import { JobpostComponent } from './jobpost/jobpost.component';
@@ -19,20 +19,31 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { EmployerLoginComponent } from './employer-login/employer-login.component';
+import { EmployerHomeComponent } from './employer-home/employer-home.component';
+import { FacultyHomeComponent } from './faculty-home/faculty-home.component';
+import { AddFacultyComponent } from './add-faculty/add-faculty.component';
+import { EditFacultyComponent } from './edit-faculty/edit-faculty.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AluminiComponent,
     EmployerComponent,
-    FacultyComponent,
+    
     AdminComponent,
     AlljobsComponent,
     JobpostComponent,
     NavbarComponent,
     IndexComponent,
     FooterComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    EmployerLoginComponent,
+    EmployerHomeComponent,
+    AboutusComponent,
+    FacultyHomeComponent,
+    AddFacultyComponent,
+    EditFacultyComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +52,8 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    
 
   ],
   providers: [],

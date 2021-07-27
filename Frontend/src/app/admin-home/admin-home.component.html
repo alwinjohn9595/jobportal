@@ -1,9 +1,19 @@
+
 <div class="container-fluid">
     <mat-tab-group mat-align-tabs="center">
-        <mat-tab label="Faculty"> 
+        <mat-tab *ngIf='true' label="Add Faculty"> 
             <div class="example-large-box mat-elevation-z4">
-                Large content
+                <app-add-faculty></app-add-faculty>
             </div>
+        
+        </mat-tab>
+        <mat-tab label="Faculty Details"> 
+
+            
+            <div class="example-large-box mat-elevation-z4">
+                  <app-faculty-home></app-faculty-home>
+            </div>
+            
         
         </mat-tab>
         <mat-tab label="Alumini"> 
@@ -11,12 +21,7 @@
             
             <div class="example-large-box mat-elevation-z4">
                 <div class="example-button-row">
-                    <button mat-raised-button>Basic</button>
-                    <button mat-raised-button>Basic</button>
-                    <button mat-raised-button>Basic</button>
-                    <button mat-raised-button>Basic</button>
-                    <button mat-raised-button>Basic</button>
-
+              
                 </div>    
             </div>
         

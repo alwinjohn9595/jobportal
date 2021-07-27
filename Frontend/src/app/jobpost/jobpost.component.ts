@@ -9,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class JobpostComponent implements OnInit {
 
-  constructor() { }
-
+  // jobpost=new jobpostModel('','','','','','','')
   ngOnInit(): void {
   }
-
+  jobPostForm(){
+    // this.jobpostservice.jobPost(this.jobpost)
+    // alert ('job posted')
+    // this.router.navigate([""])
+  }
 }

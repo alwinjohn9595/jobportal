@@ -1,7 +1,7 @@
 
 .container-fluid{
   padding-top: 50px;
-  height: 850px;
+ 
   background: rgb(1,70,108);
   background: linear-gradient(90deg, #3931af 3%, rgba(0,212,255,1) 100%);
   
@@ -9,40 +9,38 @@
 }
 
 
-.welcome-message{
-
-  color:#ffffff;
-  font-size: 4rem;
-
-  margin-top: 75px;
-  margin-left: 50px;
+.btn{
+  width: 80px;
+  margin-left: 10px;
+} 
+.row{
+  margin-left: 10px;
 }
-.description{
-  color:#ffffff;
-  margin-top: 10px;
-  font-size: 3em;
-  margin-left: 50px;
-  font-weight: 600;
+.mat-tab-group{
+    margin-top: 50px;
+    align-items:center;
+    justify-content:right;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+
+}
+.mat-tab-header{
+  font-size: 1.5em;
+  justify-content: center;
 }
 
-
-
-.example-small-box, .example-large-box {
+.example-large-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 100px;
+    margin: 16px;
     padding: 5px;
     border-radius: 8px;
     background-color: transparent;
   }
   
-  .example-small-box {
-    height: max-content;
-    width: 600px;
-    background-color: transparent;
-    
-  }
+ 
   
   .example-large-box {
     height: max-content;
