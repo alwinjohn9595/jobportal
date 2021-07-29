@@ -49,14 +49,15 @@ app.post("/faculty/login", async(req,res)=>{
     const password = req.body.password;
     const udata = await Facultydata.findOne({email: email})
     
-    if(udata==null){
-      return res.status(404).send("userdata not present");
-    }
+    
 
      if(email===admin && password===adminPwd){
       
       return  res.status(200).send({email});
-    }if(udata.email===email && udata.password===password){
+    }else if(udata==null){
+        return res.status(404).send("userdata not present");
+      }else
+      if(udata.email===email && udata.password===password){
       
        res.status(200).send({email});
     }
@@ -71,7 +72,7 @@ app.post("/faculty/login", async(req,res)=>{
 })
 
 
-app.post("/admin/add",async(req,res)=>{
+app.post("/faculty/add",async(req,res)=>{
     console.log(req.body);
 
     const user = req.body;
@@ -105,7 +106,15 @@ app.put("/faculty/update",async(req,res)=>{
 
 
 
-
+app.delete('/facultyremove/:id',(req,res)=>{
+   
+    id = req.params.id;
+    Facultydata.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        res.send();
+    })
+  })
 
 
 

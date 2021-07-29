@@ -27,12 +27,12 @@
 
 
             <!-- *ngIf="_auth.isadmin()"  (click)="editfacultys(faculty)"
-            *ngIf="_auth.isadmin()"  (click)="deletefacultys(faculty)" -->
+            *ngIf="_auth.isadmin()"  (click)="deletefaculty(faculty)" -->
             &nbsp;
             <a  class="btn btn-primary"(click)="editfaculty(faculty)" >Update <i  class="glyphicon glyphicon-chevron-right"></i></a>
              &nbsp;
 
-            <a  class="btn btn-primary"   >Delete <i class="glyphicon glyphicon-chevron-right"></i></a>
+            <a  class="btn btn-primary" (click)="deletefaculty(faculty)"  >Delete <i class="glyphicon glyphicon-chevron-right"></i></a>
           <div class="col-xs-3"></div>
         </div>
         <br><br>

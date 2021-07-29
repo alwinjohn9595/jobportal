@@ -45,14 +45,15 @@ export class FacultyHomeComponent implements OnInit {
 
   }
 
-  deleteBooks(data:any)
+  deletefaculty(data:any)
   {
     this.admin.deletefaculty(data._id)
       .subscribe((data:any) => {
-        this.facultydata = this.facultydata.filter(p => p !== data);
-      })
-
-
+        this.facultydata = JSON.parse(JSON.stringify(data))
+        
+   })
+   alert("success")
+   this.routes.navigate(['/admin/home']);
   
 
   
