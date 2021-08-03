@@ -24,6 +24,15 @@ import { EmployerHomeComponent } from './employer-home/employer-home.component';
 import { FacultyHomeComponent } from './faculty-home/faculty-home.component';
 import { AddFacultyComponent } from './add-faculty/add-faculty.component';
 import { EditFacultyComponent } from './edit-faculty/edit-faculty.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
+import { AlumniHomeComponent } from './alumni-home/alumni-home.component';
+import { AlumniService } from './alumni.service';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
+import { ApplyJobComponent } from './apply-job/apply-job.component';
+import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
+import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +52,11 @@ import { EditFacultyComponent } from './edit-faculty/edit-faculty.component';
     AboutusComponent,
     FacultyHomeComponent,
     AddFacultyComponent,
-    EditFacultyComponent
+    EditFacultyComponent,
+    AlumniHomeComponent,
+    ApplyJobComponent,
+    AppliedJobsComponent,
+    EmployerProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +69,7 @@ import { EditFacultyComponent } from './edit-faculty/edit-faculty.component';
     
 
   ],
-  providers: [],
+  providers: [AuthService,AlumniService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

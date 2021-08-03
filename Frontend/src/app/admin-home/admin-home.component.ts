@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlumniService } from '../alumni.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -7,9 +8,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor() { }
+
+  facultydata = [{
+    uname: '',
+    email: '',
+    hq: '',
+    phoneno: '',
+    experience:'',
+    skill:'',
+    status: '',
+  }]
+
+  constructor(private alumni:AlumniService) { }
 
   ngOnInit(): void {
+    this.alumni.getalumnidetails().subscribe((data)=>{
+      this.facultydata=JSON.parse(JSON.stringify(data))
+
   }
+    )
+}
+
+
+
+
+
+
+save(alumni:any) {
+     
+  console.log(alumni)
+  this.alumni.savealumni(alumni);   
+    alert("Success");
+    this.ngOnInit();
+    
+  
+}
+
+
+
+
+
+
+
 
 }

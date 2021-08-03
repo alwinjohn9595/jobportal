@@ -3,6 +3,8 @@ import { FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -45,8 +47,6 @@ export class AdminComponent implements OnInit {
   }
    
 
-
-
   get loginFormControl() {
       
     return this.loginForm.controls;
@@ -65,20 +65,18 @@ loginUser () {
     res =>{
       console.log("hai");
       console.log(res)
-      alert("User sucessfully added");
+      Swal.fire("welcome admin");
       this.routes.navigate(["/admin/home"]);
       
     },
     err =>{
        if(err.status === 409){
-         alert("Incorrect credentials");
+        Swal.fire("Incorrect credentials");
        }else{
-         alert("somthing went wrong");
+        Swal.fire("somthing went wrong");
          
          console.log(err);
-         
        }
-
     }
     
   )

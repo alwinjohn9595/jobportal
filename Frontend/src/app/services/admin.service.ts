@@ -36,12 +36,15 @@ editfaculty(faculty:any){
     .subscribe(data =>{console.log(data)})
 }
 
+
+
 deletefaculty(id:any)
 {
     console.log("hai")
   return this.http.delete("http://localhost:3000/facultyremove/"+id)
 
 }
+
   
   
   

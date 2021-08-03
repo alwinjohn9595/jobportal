@@ -3,11 +3,16 @@ const Schema = mongoose.Schema;
 
 
 const JobSchema = new Schema ({
-    uname: String,
-  email: String,
-  password: String,
-  hq: String,
-  city: String
+   
+    jobrole:String,
+    email:String,
+    jobdesc:String,
+    hq:String,
+    lastdate:String,
+    skill:String,
+    experience:String,
+    jobtype:String,
+    cname:String
     
 });
 

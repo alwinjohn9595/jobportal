@@ -45,19 +45,27 @@ export class FacultyHomeComponent implements OnInit {
 
   }
 
-  deletefaculty(data:any)
+  deletefaculty(faculty:any)
   {
-    this.admin.deletefaculty(data._id)
+    this.admin.deletefaculty(faculty._id)
       .subscribe((data:any) => {
-        this.facultydata = JSON.parse(JSON.stringify(data))
+        
+        this.facultydata = this.facultydata.filter(p => p !== faculty);
         
    })
    alert("success")
    this.routes.navigate(['/admin/home']);
   
 
-  
+   
 
 }
+
+
+  
+
+  
+
+
 
 }

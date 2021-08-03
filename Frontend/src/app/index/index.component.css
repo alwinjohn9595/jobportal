@@ -657,3 +657,20 @@ footer
  
      margin-bottom: 30px;
   }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  
+  
+  th {
+    background-color: #04AA6D;
+    color: white;
+  }

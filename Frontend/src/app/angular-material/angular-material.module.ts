@@ -65,7 +65,6 @@ const materialModules = [
   MatBadgeModule,
   MatGridListModule,
   MatRadioModule,
-  MatDatepickerModule,
   MatTooltipModule
 ];
 
