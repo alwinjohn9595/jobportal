@@ -19,8 +19,11 @@ export class ApplyJobComponent implements OnInit {
   }
   data1 = localStorage.getItem("jobId");
   data2 = localStorage.getItem("jobemail");
-  
-
+  data3 = localStorage.getItem("jobdate")
+  data4 = localStorage.getItem("jobcompany")
+  data5 = localStorage.getItem("jobrole")
+  data6 = localStorage.getItem("jobdescription")
+  data7 = localStorage.getItem("jobtype")
   signupForm = this.fb.group({
     uname:['',[Validators.required]],
     Uemail:['',[Validators.required,Validators.pattern(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
@@ -30,6 +33,11 @@ export class ApplyJobComponent implements OnInit {
     skill:['',Validators.required],
     experience:['',Validators.required],
     job_id:[this.data1],
+    lastdate:[this.data3],
+    cname:[this.data4],
+    jobtype:[this.data7],
+    jobdesc:[this.data6],
+    jobrole:[this.data5]
 
 
   })  
@@ -39,11 +47,12 @@ export class ApplyJobComponent implements OnInit {
   }
   signupUser() {
     console.log(this.data1) ;
-    console.log(this.data2) 
+    console.log(this.data2) ;
+    console.log(this.data4);
     this._job.applyjob(this.signupForm.value).subscribe(
       res =>{
         
-        Swal.fire("User sucessfully added");
+        Swal.fire("Applied sucessfully ");
         this.ngOnInit();
         
       },

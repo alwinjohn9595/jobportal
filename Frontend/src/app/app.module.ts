@@ -32,6 +32,7 @@ import { AuthGuard } from './auth.guard';
 import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
 import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
+import { UpdateAlumniComponent } from './update-alumni/update-alumni.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { EmployerProfileComponent } from './employer-profile/employer-profile.co
     AlumniHomeComponent,
     ApplyJobComponent,
     AppliedJobsComponent,
-    EmployerProfileComponent
+    EmployerProfileComponent,
+    UpdateAlumniComponent
   ],
   imports: [
     BrowserModule,

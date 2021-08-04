@@ -15,6 +15,7 @@ import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
 
 import { IndexComponent } from './index/index.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UpdateAlumniComponent } from './update-alumni/update-alumni.component';
 
 const routes: Routes = [
   {path:"",component:IndexComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path:"admin/editfaculty",component:EditFacultyComponent},
   {path:'applicant',component:AppliedJobsComponent},
   {path:"alumni/home",component:AlumniHomeComponent},
-  {path:"applyjob",component:ApplyJobComponent}
+  {path:"applyjob",component:ApplyJobComponent},
+  {path:"alumni/update",component:UpdateAlumniComponent}
 
 
 ];

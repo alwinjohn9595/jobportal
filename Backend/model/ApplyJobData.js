@@ -12,7 +12,12 @@ const AppliedJobSchema = new Schema ({
         skill:String,
         experience:String,
         job_id:String,
-        status:Boolean
+        status:Boolean,
+        lastdate:String,
+        cname:String,
+        jobtype:String,
+        jobdesc:String,
+        jobrole:String
 
 })
 

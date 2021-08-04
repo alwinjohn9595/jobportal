@@ -111,8 +111,11 @@
                   </mat-form-field>
 
                   <mat-form-field class="example-full-width">
-                    <input type="password" formControlName="password" matInput placeholder="Password"
+                    <input  formControlName="password"  matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
                       [(ngModel)]="alumnidetails.password">
+                      <button type="button" mat-icon-button matSuffix (click)="hide =!hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
 
 
                     <mat-error class="error-text" *ngIf="signupFormControl.password.errors?.required">Password is

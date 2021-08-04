@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 import { AlumniService } from '../alumni.service';
 import { AuthService } from '../auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alumini',
@@ -24,6 +25,7 @@ export class AluminiComponent implements OnInit {
     private alumni: AlumniService,
     private _auth: AuthService,
     private _router: Router) { }
+
   alumnidetails = {
     uname: '',
     email: '',
@@ -65,7 +67,7 @@ export class AluminiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this)
+    
   }
 
   user = {
@@ -79,12 +81,14 @@ export class AluminiComponent implements OnInit {
     this._auth.loginUser(this.user)
       .subscribe(
         res => {
-          localStorage.setItem('token', res.token)
+          localStorage.setItem('alumniId',this.user.email)
+          
           this._router.navigate(['alumni/home'])
         },
         err => {
           console.log(err);
-          alert("invalid login details")
+
+          Swal.fire("User Not Signed IN ");
         }
       )
   }
@@ -96,11 +100,31 @@ export class AluminiComponent implements OnInit {
 
 
 signupUser() {
+  console.log(this.signupForm.value);
+  this.alumni.addalumni(this.signupForm.value).subscribe(
+    res =>{
+      
+      Swal.fire("User sucessfully added");
+      console.log(res);
+      
+    },
+    err =>{
+       if(err.error.code === 11000){
+        Swal.fire("email already in use");
+       }else{
+        Swal.fire("somting Went Worng");
+         
+         
+       }
 
-  this.alumni.addalumni(this.alumnidetails);
-  console.log("Called");
-  alert("Success");
-  this.routes.navigate([""])
+    }
+    
+  )
+
+
+
+  
+  this.routes.navigate(["/alumni"])
 }
 
   }

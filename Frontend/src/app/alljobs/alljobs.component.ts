@@ -41,6 +41,11 @@ jobs=[{  jobrole:'',
   apply(data:any){
     localStorage.setItem("jobId", data._id.toString());
     localStorage.setItem("jobemail", data.email.toString());
+    localStorage.setItem("jobdate",data.lastdate.toString());
+    localStorage.setItem('jobcompany',data.cname.toString());
+    localStorage.setItem("jobrole",data.jobrole.toString())
+     localStorage.setItem("jobdescription",data.jobdesc.toString())
+     localStorage.setItem('jobtype',data.jobtype.toString())
     this.routes.navigate(['applyjob']);
   }
   view(data:any){
@@ -57,7 +62,7 @@ jobs=[{  jobrole:'',
             
         })
         alert("success")
-        this.ngOnInit();
+        this.ngOnInit;
   
    }
 

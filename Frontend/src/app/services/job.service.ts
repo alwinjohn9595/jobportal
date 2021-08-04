@@ -15,13 +15,14 @@ postjob(user:any){
 }
 
 getjobs(){
-  return this.http.get("http://localhost:3000/getjobs")
+  return this.http.get("http://localhost:3000/jobs/all")
 }
 getempjob(empdata:any){
   return this.http.get("http://localhost:3000/getempjobs/"+empdata)
 }
 applyjob(data:any){
-  return this.http.post("http://localhost:3000/applyjob",data)
+  console.log(data)
+  return this.http.post("http://localhost:3000/jobs/applyjob",data)
 }
 
 
@@ -32,7 +33,10 @@ deletejobpost(data:any){
 
 
 
-
+loggedinuserjobdetails(data1:any){
+   console.log(data1);
+  return this.http.post<any>("http://localhost:3000/jobs/loggedin/",{"email":data1})
+}
 
 applicantdata(data:any){
   console.log(data)

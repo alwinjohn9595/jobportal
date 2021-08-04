@@ -19,6 +19,12 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
+const alumnirouter =require("./routers/alumniRouter");
+const jobrouter =require("./routers/jobRouter");
+
+app.use("/alumni",alumnirouter);
+
+app.use("/jobs",jobrouter);
 
 admin = "admin@gmail.com";
 adminPwd = "Aa@123456"
@@ -142,77 +148,68 @@ app.post('/insert', function (req, res) {
 });
 
 
-// app.get('/:id',  (req, res) => {
 
-//     const id = req.params.id;
-//       alumnidata.findOne({"_id":id})
-//       .then((alumni)=>{
-//           res.send(alumni);
-//       });
-//  })
 
 //alumni login
-app.post('/login', async(req, res) => {
-    const userrole = 0;
-    const email = req.body.email;
-    const password = req.body.password;
-    const udata = await alumnidata.findOne({ email: email })
+// app.post('/login', async(req, res) => {
+//     const userrole = 0;
+//     const email = req.body.email;
+//     const password = req.body.password;
+//     const udata = await alumnidata.findOne({ email: email })
 
 
-    if (udata == null) {
-        return res.status(404).send("userdata not present");
-    }
+//     if (udata == null) {
+//         return res.status(404).send("userdata not present");
+//     }
 
- if(udata.email === email && udata.password === password) {
+//  if(udata.email === email && udata.password === password) {
 
-    let payload = { subject: email + password }
-    let token = jwt.sign(payload, 'secretKey')
-    res.status(200).send({ token })
-}
-else {
-    res.status(405).send("something Went Wrong Try Again");
-}
+//     let payload = { subject: email + password }
+//     let token = jwt.sign(payload, 'secretKey')
+//     res.status(200).send({ token })
+// }
+// else {
+//     res.status(405).send("something Went Wrong Try Again");
+// }
         
-})
+// })
 
-app.get('/alumni', function (req, res) {
+// app.get('/alumni', function (req, res) {
 
-    alumnidata.find()
-        .then(function (alumni) {
-            res.send(alumni);
-        });
-});
-
-
-app.post("/alumni/login", async (req, res) => {
+//     alumnidata.find()
+//         .then(function (alumni) {
+//             res.send(alumni);
+//         });
+// });
 
 
+// app.post("/alumni/login", async (req, res) => {
 
-    const userrole = 0;
-    const email = req.body.email;
-    const password = req.body.password;
-    const udata = await alumnidata.findOne({ email: email })
 
-    if (udata == null) {
-        return res.status(404).send("userdata not present");
-    }
 
-    if (email === admin && password === adminPwd) {
+//     const userrole = 0;
+//     const email = req.body.email;
+//     const password = req.body.password;
+//     const udata = await alumnidata.findOne({ email: email })
 
-        return res.status(200).send({ email });
-    } if (udata.email === email && udata.password === password) {
+    
 
-        res.status(200).send({ email });
-    }
-    else {
-        res.status(405).send("something Went Wrong Try Again");
-    }
+//     if (email === admin && password === adminPwd) {
+
+//         return res.status(200).send({ email });
+//     } if (udata.email === email && udata.password === password) {
+
+//         res.status(200).send({ email });
+//     }
+//     else {
+//         res.status(405).send("something Went Wrong Try Again");
+//     }
 
 
 
 
 
-})
+// })
 
 
 
@@ -221,22 +218,22 @@ app.post("/alumni/login", async (req, res) => {
 
 
 
-app.put("/alumni/save",async(req,res)=>{
+// app.put("/alumni/save",async(req,res)=>{
     
-    let user = await alumnidata.findById(req.body._id);
+//     let user = await alumnidata.findById(req.body._id);
     
-    user1 = req.body;
+//     user1 = req.body;
 
     
-    const editUser = new alumnidata(user1);
+//     const editUser = new alumnidata(user1);
 
-    try{
-        await alumnidata.updateOne({"_id": req.body._id}, editUser);
-        res.status(201).json(editUser);
-    } catch (error){
-        res.status(409).json({ message: error.message});     
-    }
-    })
+//     try{
+//         await alumnidata.updateOne({"_id": req.body._id}, editUser);
+//         res.status(201).json(editUser);
+//     } catch (error){
+//         res.status(409).json({ message: error.message});     
+//     }
+//     })
 
 //-----Almni Verifcation  ends
 
@@ -264,17 +261,17 @@ try{
 })
 
 
-app.get("/getjobs",async(req,res)=>{
+// app.get("/getjobs",async(req,res)=>{
     
 
     
-        Jobdata.find()
-        .then(function(products){
-            res.send(products);
+//         Jobdata.find()
+//         .then(function(products){
+//             res.send(products);
         
-        });
+//         });
     
-})
+// })
 
 
 app.post("/applyjob",async(req,res)=>{

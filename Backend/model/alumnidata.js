@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 // mongoose.connect('mongodb://localhost:27017/alumnidata',{ useNewUrlParser: true , useUnifiedTopology: true })
 const addalumniSchema = new Schema({
   uname: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true
+  },
   password: String,
   hq: String,
   city: String,

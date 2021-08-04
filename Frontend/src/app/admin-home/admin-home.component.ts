@@ -22,7 +22,7 @@ export class AdminHomeComponent implements OnInit {
   constructor(private alumni:AlumniService) { }
 
   ngOnInit(): void {
-    this.alumni.getalumnidetails().subscribe((data)=>{
+    this.alumni.getallalumnidetails().subscribe((data)=>{
       this.facultydata=JSON.parse(JSON.stringify(data))
 
   }

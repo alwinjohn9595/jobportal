@@ -17,20 +17,35 @@ export class AlumniService {
 
   constructor(private http: HttpClient) { }
   addalumni(item: any) {
-    return this.http.post("http://localhost:3000/insert", { "alumni": item })
-      .subscribe(data => { console.log(data) })
+    console.log(item);
+    return this.http.post<any>("http://localhost:3000/alumni/signup",item)
+      
   }
 
-  getalumnidetails(){
-    return this.http.get("http://localhost:3000/alumni");
+  getalumni(id:any){
+    return this.http.get("http://localhost:3000/alumni/update/"+id);
   }
-
-
+//all alumnissss
+  getallalumnidetails(){
+    return this.http.get("http://localhost:3000/alumni/all");
+  }
 
 savealumni(item:any){
   console.log(item)
   return this.http.put("http://localhost:3000/alumni/save",item)
   .subscribe(data =>{console.log(data)})
+}
+
+getalumnidetail(email:any){
+  return this.http.get("http://localhost:3000/alumni/"+email)
+
+}
+
+
+editalumni(alumnidata:any){
+  
+  return this.http.put("http://localhost:3000/alumni/update",alumnidata)
+  .subscribe(data =>{console.log("success")})
 }
 
 }
