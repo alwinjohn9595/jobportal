@@ -11,13 +11,14 @@ export class EmployerProfileComponent implements OnInit {
     name:"",
     email:'',
     phone:'',
-    company:''
+    company:'',
+    compdesc:''
   }
   constructor( private employerservice:EmployerdataService ) { }
 
   ngOnInit(): void {
-    let email=localStorage.getItem("email")
-    console.log(email,"new")
+    let email=localStorage.getItem("employeremail")
+    
     this.employerservice.getEmployer(email)
     .subscribe((data)=>{
       this.employerProfile=JSON.parse(JSON.stringify(data))

@@ -9,7 +9,7 @@ alumni.post("/login",async (req,res)=>{
     console.log(emailalumni)
     const password = req.body.password;
     console.log(password)
-    const udata = await alumnidata.findOne({ email: emailalumni})
+    const udata = await alumnidata.findOne({ email: emailalumni,status:true})
      console.log(udata);
     
 
@@ -46,8 +46,9 @@ alumni.post('/signup', async  (req, res)=> {
 
 
 alumni.get('/:id',  async(req, res) => {
-
+    
     const id = req.params.id;
+    console.log('id')
      await alumnidata.findOne({"email":id})
       .then((alumni)=>{
           res.send(alumni);
@@ -57,7 +58,7 @@ alumni.get('/:id',  async(req, res) => {
  alumni.get('/update/:id',  async(req, res) => {
 
     const id = req.params.id;
-     await alumnidata.findOne({"_id":id})
+     await alumnidata.findOne({"email":id})
       .then((alumni)=>{
           res.send(alumni);
       });
@@ -80,8 +81,10 @@ alumni.put('/update',async (req,res)=>{
     
 })
 
-alumni.get('/all',async (req,res)=>{
 
+
+alumni.get('',async (req,res)=>{
+    
     alumnidata.find()
             .then(function (alumni) {
                 res.send(alumni);
@@ -89,6 +92,36 @@ alumni.get('/all',async (req,res)=>{
 
 })
 
+
+alumni.put("/save",async(req,res)=>{
+    
+    let user = await alumnidata.findById(req.body._id);
+    
+    user1 = req.body;
+
+    
+    const editUser = new alumnidata(user1);
+
+    try{
+        await alumnidata.updateOne({"_id": req.body._id}, editUser);
+        res.status(201).json(editUser);
+    } catch (error){
+        res.status(409).json({ message: error.message});     
+    }
+    })
+
+
+
+alumni.delete("/delete/:id", (req,res)=>{
+     
+    
+    id = req.params.id
+    alumnidata.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        res.status(200);
+    })
+})  
 
 
 module.exports=alumni;

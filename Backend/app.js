@@ -130,86 +130,15 @@ Facultydata.findByIdAndDelete({"_id":id})
 
 
 
-app.post('/insert', function (req, res) {
-
-    
-
-    var alumni = {
-        uname: req.body.alumni.uname,
-        email: req.body.alumni.email,
-        password: req.body.alumni.password,
-        hq: req.body.alumni.hq,
-        city: req.body.alumni.city,
-
-
-    }
-    var alumni = new alumnidata(alumni);
-    alumni.save();
-});
-
-
-
-
-//alumni login
-// app.post('/login', async(req, res) => {
-//     const userrole = 0;
-//     const email = req.body.email;
-//     const password = req.body.password;
-//     const udata = await alumnidata.findOne({ email: email })
-
-
-//     if (udata == null) {
-//         return res.status(404).send("userdata not present");
-//     }
-
-//  if(udata.email === email && udata.password === password) {
-
-//     let payload = { subject: email + password }
-//     let token = jwt.sign(payload, 'secretKey')
-//     res.status(200).send({ token })
-// }
-// else {
-//     res.status(405).send("something Went Wrong Try Again");
-// }
-        
-// })
-
-// app.get('/alumni', function (req, res) {
-
-//     alumnidata.find()
-//         .then(function (alumni) {
-//             res.send(alumni);
-//         });
-// });
-
-
-// app.post("/alumni/login", async (req, res) => {
-
-
-
-//     const userrole = 0;
-//     const email = req.body.email;
-//     const password = req.body.password;
-//     const udata = await alumnidata.findOne({ email: email })
-
-    
-
-//     if (email === admin && password === adminPwd) {
-
-//         return res.status(200).send({ email });
-//     } if (udata.email === email && udata.password === password) {
-
-//         res.status(200).send({ email });
-//     }
-//     else {
-//         res.status(405).send("something Went Wrong Try Again");
-//     }
 
 
 
 
 
-// })
+
+
+
+
 
 
 
@@ -218,22 +147,7 @@ app.post('/insert', function (req, res) {
 
 
 
-// app.put("/alumni/save",async(req,res)=>{
-    
-//     let user = await alumnidata.findById(req.body._id);
-    
-//     user1 = req.body;
 
-    
-//     const editUser = new alumnidata(user1);
-
-//     try{
-//         await alumnidata.updateOne({"_id": req.body._id}, editUser);
-//         res.status(201).json(editUser);
-//     } catch (error){
-//         res.status(409).json({ message: error.message});     
-//     }
-//     })
 
 //-----Almni Verifcation  ends
 
@@ -243,22 +157,7 @@ app.post('/insert', function (req, res) {
 // ------------JOB SECTION STARTS------------------- 
 
 
-app.post('/postjob',async(req,res)=>{
 
-    
-
-const user = req.body;
-
-
-const newUser = new Jobdata(user);
-try{
-    await newUser.save();
-    res.status(201).json(newUser);
-} catch (error){
-    res.status(409).json({ message: error.message});     
-}
-
-})
 
 
 // app.get("/getjobs",async(req,res)=>{
@@ -293,23 +192,7 @@ app.post("/applyjob",async(req,res)=>{
 
 })
 
-app.delete('/deletejobpost/:id',(req,res)=>{
 
-    id = req.params.id;
-Jobdata.findByIdAndDelete({"_id":id})
-.then(()=>{
-    console.log('success')
-    
-})
-
-
-ApplyJobdata.findByIdAndDelete({"job_id":id})
-.then(()=>{
-    console.log('success')
-    res.send();
-})
-
-})
 
 
 app.post("/appverify/",async(req,res)=>{
@@ -407,6 +290,14 @@ app.get("/getEmployer/:id",async(req,res)=>{
     employerdata.findOne({"email":email})
     .then((singleEmployer)=>{
         res.send(singleEmployer)
+    })
+})
+
+//-----------All Employer----------
+app.get("/getAllEmployer",async(req,res)=>{
+    employerdata.find()
+    .then(function(employers){
+        res.send(employers)
     })
 })
 

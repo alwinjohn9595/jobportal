@@ -37,7 +37,54 @@ job.post("/loggedin",async (req,res)=>{
     })
 })
 
+job.post('/postjob',async(req,res)=>{
+
+    
+
+    const user = req.body;
+    
+    
+    const newUser = new jobdata(user);
+    try{
+        await newUser.save();
+        res.status(201).json(newUser);
+    } catch (error){
+        res.status(409).json({ message: error.message});     
+    }
+    
+    })
 
 
+    job.delete('/deletejobpost/:id',(req,res)=>{
+
+        id = req.params.id;
+    jobdata.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        
+    })
+    
+    
+    ApplyJobdata.findOneAndDelete({"job_id":id})
+    .then(()=>{
+        console.log('success')
+        res.send();
+    })
+    
+    })    
+
+
+
+
+    job.delete('/deleteapplicant/:id',(req,res)=>{
+
+        id = req.params.id;
+        console.log(id)
+        ApplyJobdata.findByIdAndDelete({"_id":id})
+        .then(()=>{
+            console.log('success')
+            res.send();
+        })
+        })
 
 module.exports=job;

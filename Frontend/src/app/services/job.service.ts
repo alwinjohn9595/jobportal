@@ -11,7 +11,7 @@ export class JobService {
 
 
 postjob(user:any){
-  return this.http.post<any>("http://localhost:3000/postjob",user)
+  return this.http.post<any>("http://localhost:3000/jobs/postjob",user)
 }
 
 getjobs(){
@@ -28,7 +28,7 @@ applyjob(data:any){
 
 
 deletejobpost(data:any){
-  return this.http.delete("http://localhost:3000/deletejobpost/"+data)
+  return this.http.delete("http://localhost:3000/jobs/deletejobpost/"+data)
 }
 
 
@@ -52,8 +52,10 @@ verifyalumni(alumni:any){
 
 
 deleteapplicant(appdelete:any){
- 
- return this.http.delete("http://localhost:3000//deleteapplicant/"+appdelete)
+ console.log(appdelete);
+ return this.http.delete("http://localhost:3000/jobs/deleteapplicant/"+appdelete).subscribe((data)=>[
+   console.log(data)
+ ])
 }
 
 }

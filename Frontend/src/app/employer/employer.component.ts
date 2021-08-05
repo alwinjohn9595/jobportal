@@ -36,6 +36,7 @@ export class EmployerComponent implements OnInit {
       Swal.fire("Profile Created")
           .then(()=>{
             localStorage.setItem("employeremail",this.emp.email)
+            console.log
       this.router.navigate(["employerHome"])})
     }else{
       this.errmsg="Passwword doesn't match"

@@ -3,42 +3,54 @@
     <mat-tab-group mat-align-tabs="center">
      <mat-tab label="Personal details"> 
           
-        <div class='card'>
-            <form >
-        <div class='card-body'>            
-          <div class='table-responsive'>
-            <table class='table'>       
+       
+      <div class="logincont" >
+        <div class="addcontents">
+          <div class="logincont">
+            <i class="bi bi-person-bounding-box"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+              <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            </svg>
+          </div>
+          <br>
             
+            <table class=''>       
               <tbody>  
                    
                     <tr>
-                        <td><label>Alumni Name</label></td>
-                        <td>{{alumnidata.uname}}</td>                  
+                        <h5><td><label> Name</label></td>
+                        <td>:{{alumnidata.uname}}</td> </h5>                 
+                      </tr> 
+                      <tr>
+                        <h5><td><label>Email</label></td>
+                        <td>:{{alumnidata.email}}</td></h5>                 
                       </tr>  
                       <tr>
-                        <td><label>Email</label></td>
-                        <td>{{alumnidata.email}}</td>                  
+                        <h5><td><label>City</label></td>
+                        <td> &nbsp; &nbsp;:{{alumnidata.city}}</td></h5> 
                       </tr>  
                       <tr>
-                        <td><label>City</label></td>
-                        <td>{{alumnidata.city}}</td> 
-                      </tr>  
+                        <h5><td><label>Qualification</label></td>
+                        <td>:{{alumnidata.hq}}</td></h5>                  
+                      </tr> 
                       <tr>
-                        <td><label>Highest qualification</label></td>
-                        <td>{{alumnidata.hq}}</td>                  
+                        <h5><td><label>Verification Status</label></td>
+                        <td> </td>
+                      </h5>                  
                       </tr>  
                       
                       <tr>
                         <td></td>
                        
-                        <td><button type="submit"  (click)="updatealumni(alumnidata)"  >Update details</button></td>                  
+                        <td><button class="button"  type="submit"  (click)="updatealumni(alumnidata)"  >Update details</button></td>                  
                       </tr>             
               </tbody>
             </table>
-          </div>
+            <br>
+
         </div>
-        </form>
-        </div>
+    </div>
         
         </mat-tab>
        

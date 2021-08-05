@@ -23,11 +23,13 @@ export class AlumniService {
   }
 
   getalumni(id:any){
+    
     return this.http.get("http://localhost:3000/alumni/update/"+id);
   }
 //all alumnissss
   getallalumnidetails(){
-    return this.http.get("http://localhost:3000/alumni/all");
+    
+    return this.http.get("http://localhost:3000/alumni");
   }
 
 savealumni(item:any){
@@ -46,6 +48,11 @@ editalumni(alumnidata:any){
   
   return this.http.put("http://localhost:3000/alumni/update",alumnidata)
   .subscribe(data =>{console.log("success")})
+}
+
+deletealumni(alumnidata:any){
+  console.log(alumnidata)
+  return this.http.delete("http://localhost:3000/alumni/delete/"+alumnidata)
 }
 
 }

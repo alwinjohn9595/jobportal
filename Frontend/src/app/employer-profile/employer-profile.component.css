@@ -1,26 +1,20 @@
-.diamond{
-    counter-reset: list-counter;
-    list-style: none;
-    float:left;
-}
-.diamond li{
-    margin: 1.5em 0;    
-}
-.diamond li:before{
-    content: counter(list-counter);
+
+.addcontents{
+    border: solid 3px black ;
+    background-image: linear-gradient(to right, rgba(25, 119, 226, 0), rgb(66, 10, 219));
+    border-radius: 70px 20px;
+    padding: 15px;
+    height: 450px;
+    width: 400px;
+    animation: mymove 5s infinite
+  }
+  @keyframes mymove {
+    50% {border-radius: 50px;}
+  }
+  .logincont{
+    display:flex;
+    justify-content: center;
+    color:black;
+    padding-top: 20px;
     
-    transform: rotate(45deg);
-    text-transform: rotate(90deg);
-    width: 1em;
-    height: 1em;
-    padding: .5em;
-    margin-right: 1em;
-    border: .25em solid #ccc;
-    background: #000;
-    color: #fff;
-    font-family: arial;
-    font-weight: bold;
-    text-align: center;
-    display: inline-block;
-    
-}
+  }

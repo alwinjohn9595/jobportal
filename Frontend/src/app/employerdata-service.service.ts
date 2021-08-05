@@ -34,4 +34,8 @@ export class EmployerdataService {
   getEmployer(id:any){
     return this.http.get('http://localhost:3000/getEmployer/'+id)
   }
+
+  getAllEmployers(){
+    return this.http.get('http://localhost:3000/getAllEmployer')
+  }
 }

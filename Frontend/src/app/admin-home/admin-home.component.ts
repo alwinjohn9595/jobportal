@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTab } from '@angular/material/tabs';
 import { AlumniService } from '../alumni.service';
+import { EmployerdataService } from '../employerdata-service.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -17,16 +19,33 @@ export class AdminHomeComponent implements OnInit {
     experience:'',
     skill:'',
     status: '',
+    _id:''
   }]
 
-  constructor(private alumni:AlumniService) { }
+  
+  employers=[
+    {
+    name:'',
+    email:'',
+    phone:'',
+    company:''
+  }
+]
+
+
+  constructor(private alumni:AlumniService,private Employer:EmployerdataService) { }
 
   ngOnInit(): void {
     this.alumni.getallalumnidetails().subscribe((data)=>{
+      
       this.facultydata=JSON.parse(JSON.stringify(data))
+      
+     })
 
-  }
-    )
+
+    this.Employer.getAllEmployers().subscribe((data)=>{
+      this.employers=JSON.parse(JSON.stringify(data))
+    })
 }
 
 
@@ -39,12 +58,20 @@ save(alumni:any) {
   console.log(alumni)
   this.alumni.savealumni(alumni);   
     alert("Success");
-    this.ngOnInit();
+    this.ngOnInit;
     
   
 }
 
-
+delete(alumni:any){
+  console.log(alumni);
+  this.alumni.deletealumni(alumni).subscribe((data)=>{
+    this.facultydata = this.facultydata.filter(p => p !== data);
+    console.log(this.facultydata)
+  });
+  
+  window.location.reload()
+}
 
 
 

@@ -31,7 +31,8 @@ export class AluminiComponent implements OnInit {
     email: '',
     password: '',
     hq: '',
-    city: ''
+    city: '',
+    
   }
 
   
@@ -82,13 +83,13 @@ export class AluminiComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('alumniId',this.user.email)
-          
+          Swal.fire("User logged In ");
           this._router.navigate(['alumni/home'])
         },
         err => {
           console.log(err);
 
-          Swal.fire("User Not Signed IN ");
+          Swal.fire("User Not Signed IN \n OR \n Yet to be Verified ");
         }
       )
   }

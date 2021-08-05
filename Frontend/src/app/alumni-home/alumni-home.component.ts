@@ -16,7 +16,8 @@ export class AlumniHomeComponent implements OnInit {
       email: '',
       password: '',
       hq: '',
-      city: ''
+      city: '',
+      status:''
     }
 
 jobs=[{  jobrole:'',

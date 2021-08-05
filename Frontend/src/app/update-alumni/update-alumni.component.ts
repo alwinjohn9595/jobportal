@@ -24,7 +24,8 @@ export class UpdateAlumniComponent implements OnInit {
     constructor(private alumniservice: AlumniService, private _auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    let id = localStorage.getItem("getalumniid");
+    let id = localStorage.getItem("alumniId");
+    console.log(id);
     this.alumniservice.getalumni(id).subscribe((data) => {
       this.alumnidataa = JSON.parse(JSON.stringify(data));
       console.log(this.alumnidataa)

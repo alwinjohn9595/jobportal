@@ -40,7 +40,7 @@ data=localStorage.getItem("employeremail");
   }
   view(data:any){
     localStorage.setItem("jobId", data._id.toString());
-    
+     
      this.routes.navigate(['/applicant'])
    }
    delete(data:any){
@@ -51,7 +51,7 @@ data=localStorage.getItem("employeremail");
       
   })
   alert("success")
-  this.ngOnInit();
+  this.ngOnInit;
 
 }
 

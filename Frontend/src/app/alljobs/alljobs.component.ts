@@ -59,10 +59,10 @@ jobs=[{  jobrole:'',
           .subscribe((data:any) => {
             
             this.jobs = this.jobs.filter(p => p !== data);
-            
+            console.log(this.jobs)
         })
         alert("success")
-        this.ngOnInit;
+        window.location.reload();
   
    }
 
