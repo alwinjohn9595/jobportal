@@ -4,16 +4,7 @@ const ApplyJobdata=require('../model/ApplyJobData')
 const jobdata = require('../model/jobdata');
 
 
-job.get("/all", async (req,res)=>{
 
-  
-    jobdata.find()
-    .then(function(datas){
-        res.send(datas);
-    
-    })
-
-})
 
 job.post("/applyjob",async(req,res)=>{
     const user = req.body;
