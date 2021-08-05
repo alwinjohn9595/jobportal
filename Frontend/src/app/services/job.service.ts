@@ -18,7 +18,7 @@ getjobs(){
   return this.http.get("http://localhost:3000/jobs/all")
 }
 getempjob(empdata:any){
-  return this.http.get("http://localhost:3000/getempjobs/"+empdata)
+  return this.http.get("http://localhost:3000/jobs/getempjobs/"+empdata)
 }
 applyjob(data:any){
   console.log(data)
@@ -47,7 +47,7 @@ applicantdata(data:any){
 verifyalumni(alumni:any){
   console.log(alumni);
   console.log("hai")
-   return this.http.post("http://localhost:3000/appverify/",alumni)
+   return this.http.post("http://localhost:3000/jobs/appverify/",alumni)
    .subscribe(app =>{console.log(app)})
 }
 

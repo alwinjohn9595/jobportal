@@ -107,4 +107,40 @@ job.post('/postjob',async(req,res)=>{
             
             })        
 
+
+
+
+        
+
+job.post("/appverify/",async(req,res)=>{
+  
+    console.log(req.body);
+
+    
+     let user = await ApplyJobdata.findById(req.body._id);
+    alumni = req.body;
+     
+    const editUser = new ApplyJobdata(alumni);
+    
+     try{
+        await ApplyJobdata.updateOne({_id: req.body._id},editUser);
+        res.status(201).json(editUser);
+    } catch (error){
+        res.status(409).json({ message: error.message});     
+    }
+
+})   
+
+
+
+
+
+job.get("/getempjobs/:id",(req,res)=>{
+    const empemail =req.params.id
+    
+    jobdata.find({email:empemail}).then((data)=>{
+        res.send(data)
+    })
+    
+});
 module.exports=job;
