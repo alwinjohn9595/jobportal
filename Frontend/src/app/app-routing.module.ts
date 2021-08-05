@@ -20,7 +20,7 @@ import { UpdateAlumniComponent } from './update-alumni/update-alumni.component';
 const routes: Routes = [
   {path:"",component:IndexComponent},
   {path:"about",component:AboutusComponent},
-  {path:"alumini",component:AluminiComponent},
+  {path:"alumni",component:AluminiComponent},
   {path:"employer",component:EmployerComponent},
   
   {path:"admin",component:AdminComponent},
