@@ -15,7 +15,7 @@ postjob(user:any){
 }
 
 getjobs(){
-  return this.http.get("http://localhost:3000/jobs/all")
+  return this.http.get("http://localhost:3000/all")
 }
 getempjob(empdata:any){
   return this.http.get("http://localhost:3000/jobs/getempjobs/"+empdata)

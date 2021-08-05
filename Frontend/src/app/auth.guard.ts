@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
 
     }
     else{
-      this._router.navigate([""])
+      this._router.navigate(["/"])
       return false
 
     }

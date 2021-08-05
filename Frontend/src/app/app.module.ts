@@ -33,7 +33,9 @@ import { ApplyJobComponent } from './apply-job/apply-job.component';
 import { AppliedJobsComponent } from './applied-jobs/applied-jobs.component';
 import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
 import { UpdateAlumniComponent } from './update-alumni/update-alumni.component';
-
+import { EmployerdataService } from './employerdata-service.service';
+import { JobService } from './services/job.service';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,12 @@ import { UpdateAlumniComponent } from './update-alumni/update-alumni.component';
     
 
   ],
-  providers: [AuthService,AlumniService],
+  providers: [AuthService,AlumniService,EmployerdataService,JobService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

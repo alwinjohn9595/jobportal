@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 
 const Facultydata = require('./model/facultydata');
-
+const jobdata = require('./model/jobdata');
 
 require("./db/connect")
 const app = new express();
@@ -23,7 +23,7 @@ const jobrouter =require("./routers/jobRouter");
 
 app.use("/alumni",alumnirouter);
 
-app.use("/jobs",jobrouter);
+app.use("/jobs",verifyToken,jobrouter);
 
 admin = "admin@gmail.com";
 adminPwd = "Aa@123456"
@@ -31,8 +31,36 @@ roleadmin = "@";
 rolefaculty="#";
 roleemployer='$';
 
+
+
+
+//token verification--------------------start
+function verifyToken(req, res, next) {
+  
+    if(!req.headers.authorization) {
+      
+  
+      return res.status(401).send('Unauthorized request')
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if(token === 'null') {
+      
+      return res.status(401).send('Unauthorized request')    
+    }
+    let payload = jwt.verify(token, 'secretKey')
+    if(!payload) {
+      return res.status(401).send('Unauthorized request')    
+    }
+    req.userId = payload.subject
+    next()
+  }
+
+
+
+//token verification--------------------ends
+
 // -------------------------------SECTION FACULTY STARTS------------------------------------
-app.get("/allfaculty",async(req,res)=>{
+app.get("/allfaculty",verifyToken,async(req,res)=>{
 
     
     Facultydata.find()
@@ -43,19 +71,19 @@ app.get("/allfaculty",async(req,res)=>{
 })
 
 
-app.get("/faculty/:id",async(req,res)=>{
+app.get("/faculty/:id",verifyToken,async(req,res)=>{
 
 const id = req.params.id;
 await Facultydata.findOne({"_id":id})
-.then((book)=>{
+.then((data)=>{
     
-    res.send(book);
+    res.send(data);
 });
 }) 
 
 // Faculty login
 
-app.post("/faculty/login", async(req,res)=>{
+app.post("/faculty/login",async(req,res)=>{
 
 const userrole= 0;
 const email = req.body.email;
@@ -84,7 +112,7 @@ else{
 
 // Adding new faculty by admin
 
-app.post("/faculty/add",async(req,res)=>{
+app.post("/faculty/add",verifyToken,async(req,res)=>{
 
 
 const user = req.body;
@@ -102,7 +130,7 @@ try{
 
 // Faculty details updating
 
-app.put("/faculty/update",async(req,res)=>{
+app.put("/faculty/update",verifyToken,async(req,res)=>{
 
 let user = await Facultydata.findById(req.body._id);
 user = req.body;
@@ -119,7 +147,7 @@ try{
 
 // deleting faculty details
 
-app.delete('/facultyremove/:id',(req,res)=>{
+app.delete('/facultyremove/:id',verifyToken,(req,res)=>{
 
 id = req.params.id;
 Facultydata.findByIdAndDelete({"_id":id})
@@ -172,7 +200,7 @@ app.post("/loginemployer",async(req,res)=>{
     }
 })
 
-app.get("/getEmployer/:id",async(req,res)=>{
+app.get("/getEmployer/:id",verifyToken,async(req,res)=>{
     const email=req.params.id;
     console.log(email)
     employerdata.findOne({"email":email})
@@ -182,7 +210,7 @@ app.get("/getEmployer/:id",async(req,res)=>{
 })
 
 //-----------All Employer----------
-app.get("/getAllEmployer",async(req,res)=>{
+app.get("/getAllEmployer",verifyToken,async(req,res)=>{
     employerdata.find()
     .then(function(employers){
         res.send(employers)
@@ -191,7 +219,17 @@ app.get("/getAllEmployer",async(req,res)=>{
 
 //---------Employer section Ends------------------
 
+// all jobs--------------------
+app.get("/all", async (req,res)=>{
 
+  
+    jobdata.find()
+    .then(function(datas){
+        res.send(datas);
+    
+    })
+
+})
 app.listen(3000, function () {
     console.log('listening to port 3000');
 });

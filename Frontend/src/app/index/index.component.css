@@ -9,7 +9,18 @@
 * {
  box-sizing: border-box;
 }
-
+.testimonial_blog {
+    background: #a7a7a7;
+    width: 100%;
+    padding: 40px 50px;
+    box-shadow: 50px 50px 0 0 #4fcaff;
+    border: solid 3px #a7a7a7 ;
+    border-radius: 70px 20px;
+    animation: mymove 2s infinite
+   }
+   @keyframes mymove {
+       50% {border-radius: 10px;}
+     }
 .button
 {
 background-color: #4CAF50; /* Green */

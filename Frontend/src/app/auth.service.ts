@@ -47,7 +47,10 @@ export class AuthService {
   
 
   }
-
+  getToken()
+  {
+    return localStorage.getItem('token')
+  }
 
   isverified(){
     const de = localStorage.getItem('token');

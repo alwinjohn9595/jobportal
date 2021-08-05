@@ -5,6 +5,33 @@ const alumnidata = require('../model/alumnidata');
 const jwt = require('jsonwebtoken');
 rolealumni='$';
 
+
+//token verification--------------------start
+function verifyToken(req, res, next) {
+  
+    if(!req.headers.authorization) {
+      
+  
+      return res.status(401).send('Unauthorized request')
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if(token === 'null') {
+      
+      return res.status(401).send('Unauthorized request')    
+    }
+    let payload = jwt.verify(token, 'secretKey')
+    if(!payload) {
+      return res.status(401).send('Unauthorized request')    
+    }
+    req.userId = payload.subject
+    next()
+  }
+
+
+
+//token verification--------------------ends
+
+
 alumni.post("/login",async (req,res)=>{
     
     const emailalumni = req.body.email;
@@ -49,7 +76,7 @@ alumni.post('/signup', async  (req, res)=> {
 });
 
 
-alumni.get('/:id',  async(req, res) => {
+alumni.get('/:id',verifyToken,  async(req, res) => {
     
     const id = req.params.id;
     console.log('id')
@@ -59,7 +86,7 @@ alumni.get('/:id',  async(req, res) => {
       });
  })
 
- alumni.get('/update/:id',  async(req, res) => {
+ alumni.get('/update/:id', verifyToken, async(req, res) => {
 
     const id = req.params.id;
      await alumnidata.findOne({"email":id})
@@ -68,7 +95,7 @@ alumni.get('/:id',  async(req, res) => {
       });
  })
 
-alumni.put('/update',async (req,res)=>{
+alumni.put('/update',verifyToken,async (req,res)=>{
     let user = await alumnidata.findById(req.body._id);
     
         user1 = req.body;
