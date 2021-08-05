@@ -23,10 +23,10 @@ export class IndexComponent implements OnInit {
   constructor(private _job:JobService) { }
 
   ngOnInit(): void {
-    // this._job.getjobs().subscribe((data)=>{
-    //   this.jobs=JSON.parse(JSON.stringify(data))
+    this._job.getjobs().subscribe((data)=>{
+      this.jobs=JSON.parse(JSON.stringify(data))
       
-  //  })
+   })
   }
 
   isDisabled(lastdate:string):boolean{
