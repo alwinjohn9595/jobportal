@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobService } from '../services/job.service';
 
 import Swal from 'sweetalert2';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-applied-jobs',
@@ -24,7 +25,7 @@ export class AppliedJobsComponent implements OnInit {
 
   data1=localStorage.getItem("jobId");
   
-  constructor(private _jobs:JobService) { }
+  constructor(private _jobs:JobService,public _auth:AuthService) { }
 
   ngOnInit(): void {
    

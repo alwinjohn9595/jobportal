@@ -29,7 +29,8 @@ app.use("/jobs",jobrouter);
 admin = "admin@gmail.com";
 adminPwd = "Aa@123456"
 roleadmin = "@";
-rolefaculty="#"
+rolefaculty="#";
+roleemployer='$';
 
 // -------------------------------SECTION FACULTY STARTS------------------------------------
 app.get("/allfaculty",async(req,res)=>{
@@ -163,8 +164,9 @@ app.post("/loginemployer",async(req,res)=>{
         console.log("null")
         return res.status(404).send("userdata does not present") 
     }else if(udata.email===email && udata.password===password){
-        
-          res.status(200).send({email})
+        let payload = {subject: email+rolefaculty}
+        let token = jwt.sign(payload, 'secretKey')
+          res.status(200).send({token})
     }else{
         
         return res.status(401).send("Something went wrong..Try again")

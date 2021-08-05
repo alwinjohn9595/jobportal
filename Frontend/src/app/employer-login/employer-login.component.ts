@@ -35,7 +35,8 @@ export class EmployerLoginComponent implements OnInit {
     .subscribe(
       res=>{
 
-        console.log(res)
+        localStorage.setItem('token', res.token);
+        
         Swal.fire("Succesfully logged in")
           .then(()=>{
       this.router.navigate(["employerHome"])})
