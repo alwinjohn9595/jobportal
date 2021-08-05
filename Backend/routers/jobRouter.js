@@ -87,4 +87,24 @@ job.post('/postjob',async(req,res)=>{
         })
         })
 
+
+
+
+        job.get("/applicant/:id",async(req,res)=>{
+
+
+
+            const user = req.params.id;
+            
+            
+            ApplyJobdata.find({job_id:user})
+            .then(function (alumni) {
+            
+            
+            res.send(alumni);
+            });
+            
+            
+            })        
+
 module.exports=job;

@@ -40,7 +40,8 @@ loggedinuserjobdetails(data1:any){
 
 applicantdata(data:any){
   console.log(data)
-  return this.http.get("http://localhost:3000/applicant/"+data)
+  return this.http.get("http://localhost:3000/jobs/applicant/"+data)
+
 }
 
 verifyalumni(alumni:any){
