@@ -126,7 +126,6 @@ Facultydata.findByIdAndDelete({"_id":id})
 // -------------------------------SECTION FACULTY ENDS------------------------------------
 
 
-//for alumni
 
 
 
@@ -137,19 +136,6 @@ Facultydata.findByIdAndDelete({"_id":id})
 
 
 
-
-
-
-
-
-// ------Alumni Verification
-
-
-
-
-
-
-//-----Almni Verifcation  ends
 
 
 
@@ -159,38 +145,6 @@ Facultydata.findByIdAndDelete({"_id":id})
 
 
 
-
-// app.get("/getjobs",async(req,res)=>{
-    
-
-    
-//         Jobdata.find()
-//         .then(function(products){
-//             res.send(products);
-        
-//         });
-    
-// })
-
-
-app.post("/applyjob",async(req,res)=>{
-    
-
-    
-
-
-    const user = req.body;
-    
-    
-    const newUser = new Jobdata(user);
-    try{
-        await newUser.save();
-        res.status(201).json(newUser);
-    } catch (error){
-        res.status(409).json({ message: error.message});     
-    }
-
-})
 
 
 
@@ -215,22 +169,6 @@ app.post("/appverify/",async(req,res)=>{
 })
 
 
-app.get("/applicant/:id",async(req,res)=>{
-
-
-
-const user = req.params.id;
-
-
-ApplyJobdata.find({job_id:user})
-.then(function (alumni) {
-
-
-res.send(alumni);
-});
-
-
-})
 
 // emplyerspecific jobs details
 
