@@ -64,8 +64,8 @@ loginUser () {
   this.auth.logindata(this.loginForm.value).subscribe(
     res =>{
       console.log("hai");
-      console.log(res)
-      Swal.fire("welcome admin");
+      localStorage.setItem('token', res.token);
+      
       this.routes.navigate(["/admin/home"]);
       
     },

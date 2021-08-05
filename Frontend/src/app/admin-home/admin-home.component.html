@@ -1,13 +1,13 @@
 <div class="container-fluid">
     <mat-tab-group mat-align-tabs="center">
-        <mat-tab *ngIf='true' label="Add Faculty">
+        <mat-tab *ngIf='_auth.isadmin()' label="Add Faculty">
             <div class="example-large-box mat-elevation-z4">
                 <app-add-faculty *matTabContent></app-add-faculty>
             </div>
 
         </mat-tab>
         <mat-tab label="Faculty Details">
-            <div class="example-large-box-faculty mat-elevation-z4">
+            <div  class="example-large-box-faculty mat-elevation-z4">
                 <app-faculty-home *matTabContent></app-faculty-home>
             </div>
 
@@ -48,10 +48,10 @@
                             <!-- *ngIf="_auth.isadmin()"  (click)="editfacultys(faculty)"
                             *ngIf="_auth.isadmin()"  (click)="deletefacultys(faculty)" -->
                             &nbsp;
-                            <a  class="btn btn-primary" (click)="save(faculty)">Save<i  class="glyphicon glyphicon-chevron-right"></i></a>
+                            <a  class="btn btn-primary" *ngIf='_auth.isadmin()' (click)="save(faculty)">Save<i  class="glyphicon glyphicon-chevron-right"></i></a>
                              &nbsp;
                 
-                            <a  class="btn btn-primary" (click)="delete(faculty._id)"  >Delete <i class="glyphicon glyphicon-chevron-right"></i></a>
+                            <a  class="btn btn-primary" *ngIf='_auth.isadmin()' (click)="delete(faculty._id)"  >Delete <i class="glyphicon glyphicon-chevron-right"></i></a>
                           <div class="col-xs-3"></div>
                         </div>
                         <br><br>

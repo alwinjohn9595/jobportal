@@ -35,11 +35,11 @@
                      <td>{{item.jobtype}}</td>
                      <td>{{item.lastdate}}</td>
                      <td>
-                        <button type="button" class="btn btn-danger" (click)=apply(item)  >Apply</button> 
+                        <button type="button" *ngIf='_auth.isadmin()' class="btn btn-danger" (click)=apply(item)  >Apply</button> 
                         &nbsp;
-                        <button type="button" class="btn btn-danger"(click)=view(item) >View  Aplicants</button>
+                        <button type="button" *ngIf='_auth.isadmin()' class="btn btn-danger"(click)=view(item) >View  Aplicants</button>
                         &nbsp;
-                        <button type="button" class="btn btn-danger"(click)=delete(item._id) >DELETE POST</button>
+                        <button type="button" *ngIf='_auth.isadmin()' class="btn btn-danger"(click)=delete(item._id) >DELETE POST</button>
                      </td>
                   </tr>
                </tbody>

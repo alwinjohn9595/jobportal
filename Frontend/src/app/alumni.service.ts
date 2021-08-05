@@ -55,4 +55,9 @@ deletealumni(alumnidata:any){
   return this.http.delete("http://localhost:3000/alumni/delete/"+alumnidata)
 }
 
+
+
+
+
+
 }

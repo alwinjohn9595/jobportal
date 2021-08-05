@@ -28,6 +28,8 @@ app.use("/jobs",jobrouter);
 
 admin = "admin@gmail.com";
 adminPwd = "Aa@123456"
+roleadmin = "@";
+rolefaculty="#"
 
 // -------------------------------SECTION FACULTY STARTS------------------------------------
 app.get("/allfaculty",async(req,res)=>{
@@ -63,14 +65,17 @@ const udata = await Facultydata.findOne({email: email})
 
 
  if(email===admin && password===adminPwd){
-  
-  return  res.status(200).send({email});
+    let payload = {subject: roleadmin}
+    let token = jwt.sign(payload, 'secretKey')
+    return  res.status(200).send({token});
 }else if(udata==null){
     return res.status(404).send("userdata not present");
   }else
   if(udata.email===email && udata.password===password){
+    let payload = {subject: email+rolefaculty}
+    let token = jwt.sign(payload, 'secretKey')
+     res.status(200).send({token});
   
-   res.status(200).send({email});
 }
 else{
   res.status(405).send("something Went Wrong Try Again");
@@ -127,36 +132,6 @@ Facultydata.findByIdAndDelete({"_id":id})
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ------------JOB SECTION STARTS------------------- 
-
-
-
-
-
-
-
-
-
-
-// emplyerspecific jobs details
-
-
-
-
-// ------------JOB SECTION Ends------------------- 
 
 //---------Employer section Starts------------------
 //Posting Employer details into database

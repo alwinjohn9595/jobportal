@@ -3,11 +3,11 @@
     <a mat-button id="Name" routerLink="/">ICT Academy</a>
    <div class="spacer"></div>
    <div class="navbar-links">
-    <a mat-button routerLink="alumni">Alumni</a>
-    <a mat-button routerLink="employer">Employer</a>
+    <a mat-button *ngIf="!_auth.loggedIn()" routerLink="alumni">Alumni</a>
+    <a mat-button *ngIf="!_auth.loggedIn()" routerLink="employer">Employer</a>
     
-    <a mat-button routerLink="admin">Faculty</a>
-    
+    <a mat-button *ngIf="!_auth.loggedIn()" routerLink="admin">Faculty</a>
+    <a mat-button  *ngIf="_auth.loggedIn()"       (click)="logoutUser()" >Logout</a>
   </div>
 
 

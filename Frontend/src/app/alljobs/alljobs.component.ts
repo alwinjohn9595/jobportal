@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 import { JobService } from '../services/job.service';
 
 @Component({
@@ -25,7 +26,8 @@ jobs=[{  jobrole:'',
 }]
 
 
-  constructor(private _job:JobService,private routes:Router) { }
+  constructor(private _job:JobService,private routes:Router,
+    public _auth:AuthService) { }
 
   ngOnInit(): void {
     this._job.getjobs().subscribe((data)=>{

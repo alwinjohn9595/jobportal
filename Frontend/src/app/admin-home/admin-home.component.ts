@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTab } from '@angular/material/tabs';
 import { AlumniService } from '../alumni.service';
+import { AuthService } from '../auth.service';
 import { EmployerdataService } from '../employerdata-service.service';
 
 @Component({
@@ -33,7 +34,8 @@ export class AdminHomeComponent implements OnInit {
 ]
 
 
-  constructor(private alumni:AlumniService,private Employer:EmployerdataService) { }
+  constructor(private alumni:AlumniService,private Employer:EmployerdataService,
+    public _auth:AuthService) { }
 
   ngOnInit(): void {
     this.alumni.getallalumnidetails().subscribe((data)=>{
