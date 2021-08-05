@@ -47,7 +47,36 @@ export class AuthService {
   
 
   }
+
+
+  isverified(){
+    const de = localStorage.getItem('token');
   
+      const tx = JSON.stringify(de);
+      
+      if( de==null){
+        return false;
+      }else{
+      
+        const ty = this.helper.decodeToken(tx);
+        
+        if(ty.state==true){
+        
+          return true;
+        }else{
+          
+        return false;
+        }
+      }
+    
+  
+    }
+  
+
+
+
+
+
  }
  
 

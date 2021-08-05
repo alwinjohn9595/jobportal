@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlumniService } from '../alumni.service';
+import { AuthService } from '../auth.service';
 import { JobService } from '../services/job.service';
 
 @Component({
@@ -32,7 +33,8 @@ jobs=[{  jobrole:'',
     _id:''
 }]
 
-  constructor(private alumniservice:AlumniService,private router:Router,private _job:JobService) { }
+  constructor(private alumniservice:AlumniService,private router:Router,private _job:JobService
+    ,public _auth:AuthService) { }
 
   ngOnInit(): void {
     let passdata = localStorage.getItem("alumniId") 

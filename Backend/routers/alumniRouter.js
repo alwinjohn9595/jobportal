@@ -2,6 +2,8 @@ const express = require('express');
 const alumni =express.Router();
 const alumnidata = require('../model/alumnidata');
 
+const jwt = require('jsonwebtoken');
+rolealumni='$';
 
 alumni.post("/login",async (req,res)=>{
     
@@ -9,7 +11,7 @@ alumni.post("/login",async (req,res)=>{
     console.log(emailalumni)
     const password = req.body.password;
     console.log(password)
-    const udata = await alumnidata.findOne({ email: emailalumni,status:true})
+    const udata = await alumnidata.findOne({ email: emailalumni})
      console.log(udata);
     
 
@@ -17,8 +19,10 @@ alumni.post("/login",async (req,res)=>{
             return res.status(404).send("userdata not present");
         }
      if (udata.email === emailalumni && udata.password === password) {
-
-        res.status(200).send({ emailalumni });
+        let payload = {subject: rolealumni,
+                       state: udata.status}
+        let token = jwt.sign(payload, 'secretKey')
+        res.status(200).send({ token });
     }
     else {
         res.status(405).send("something Went Wrong Try Again");

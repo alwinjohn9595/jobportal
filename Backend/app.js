@@ -3,13 +3,12 @@ const express = require('express');
 const cors = require('cors');
 
 const Facultydata = require('./model/facultydata');
-const alumnidata = require('./model/alumnidata');
-const ApplyJobdata=require('./model/ApplyJobData')
+
 
 require("./db/connect")
 const app = new express();
 const jwt = require('jsonwebtoken');
-const Jobdata = require('./model/jobdata');
+
 const employerdata=require ('./model/employerData')
 
 

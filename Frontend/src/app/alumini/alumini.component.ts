@@ -82,8 +82,8 @@ export class AluminiComponent implements OnInit {
     this._auth.loginUser(this.user)
       .subscribe(
         res => {
+          localStorage.setItem("token",res.token)
           localStorage.setItem('alumniId',this.user.email)
-          Swal.fire("User logged In ");
           this._router.navigate(['alumni/home'])
         },
         err => {
