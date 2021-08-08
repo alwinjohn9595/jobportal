@@ -29,15 +29,6 @@ export class IndexComponent implements OnInit {
    })
   }
 
-  isDisabled(lastdate:string):boolean{
-    let currentDate=new Date()
 
-    if(currentDate>new Date(lastdate)){
-      return true
-    }
-    else{
-      return false
-    }
-  }
 
 }
