@@ -60,7 +60,7 @@ export class AdminComponent implements OnInit {
 loginUser () {
     
   
-  console.log(this.loginForm.value);
+  
   this.auth.logindata(this.loginForm.value).subscribe(
     res =>{
       console.log("hai");
