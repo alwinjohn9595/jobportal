@@ -18,7 +18,7 @@ export class AdminHomeComponent implements OnInit {
     hq: '',
     phoneno: '',
     experience:'',
-    skill:'',
+    city:'',
     status: '',
     _id:''
   }]

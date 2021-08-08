@@ -68,4 +68,17 @@ jobs=[{  jobrole:'',
   
    }
 
+
+   
+isDisabled(lastdate:string):boolean{
+  let currentDate=new Date()
+   console.log(currentDate)
+  if(currentDate<new Date(lastdate)){
+    return true
+  }
+  else{
+    return false
+  }
+}
+
 }

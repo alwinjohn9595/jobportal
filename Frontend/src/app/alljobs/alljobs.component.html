@@ -35,7 +35,7 @@
                      <td>{{item.jobtype}}</td>
                      <td>{{item.lastdate}}</td>
                      <td>
-                        <button type="button" *ngIf='_auth.isadmin() || _auth.isverified' class="btn btn-danger" (click)=apply(item)  >Apply</button> 
+                        <button type="button" *ngIf='!_auth.isadmin() && isDisabled(item.lastdate)' class="btn btn-danger" (click)=apply(item)  >Apply</button> 
                         &nbsp;
                         <button type="button" *ngIf='_auth.isadmin()' class="btn btn-danger"(click)=view(item) >View  Aplicants</button>
                         &nbsp;
